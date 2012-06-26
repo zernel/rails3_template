@@ -1,8 +1,16 @@
+# Get project name from path
+project_name = `pwd`.split('/').last.strip.downcase.gsub(/\s|-/, '_')
+
 # remove files
 run "rm README.rdoc"
 run "rm public/index.html"
 run "rm app/assets/images/rails.png"
-run "cp config/database.yml config/database.yml.example"
+run "mv config/database.yml config/database.yml.sqlite"
+
+# inin database config for psql
+file 'config/database.yml.psql', File.read("#{File.dirname(rails_template)}/resources/config/database.yml.psql")
+gsub_file 'config/database.yml.psql', /todo/, project_name
+run "cp config/database.yml.psql config/database.yml"
 
 # install gems
 run "rm Gemfile"
@@ -16,6 +24,9 @@ file 'app/views/content/index.html.erb', File.read("#{File.dirname(rails_templat
 
 # bundle install
 run "bundle install"
+
+# init database
+rake("db:create")
 
 # generate rspec
 generate "rspec:install"
