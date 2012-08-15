@@ -2,7 +2,10 @@
 run "rm README.rdoc"
 run "rm public/index.html"
 run "rm app/assets/images/rails.png"
-run "cp config/database.yml config/database.yml.example"
+run "cp config/database.yml config/database.example.yml"
+
+# reset css
+file 'app/assets/stylesheets/reset.css', File.read("#{File.dirname(rails_template)}/resources/app/assets/stylesheets/reset.css")
 
 # install gems
 run "rm Gemfile"
@@ -45,11 +48,11 @@ environment 'Time::DATE_FORMATS.merge!(:default => "%Y/%m/%d %I:%M %p", :ymd => 
 
 # .gitignore
 append_file '.gitignore', <<-CODE
- config/database.yml
- Thumbs.db
- .DS_Store
- tmp/*
- coverage/*
+config/database.yml
+Thumbs.db
+.DS_Store
+tmp/*
+coverage/*
 CODE
 
 # keep tmp and log
