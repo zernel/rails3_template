@@ -51,6 +51,9 @@ Thumbs.db
 tmp/*
 coverage/*
 .sass-cache/
+public/assets/
+public/uploads/
+.sass-cache/
 CODE
 
 # keep tmp and log
