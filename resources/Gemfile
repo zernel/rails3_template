@@ -1,8 +1,6 @@
 #source 'https://rubygems.org'
 source 'http://ruby.taobao.org'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'rails', '3.2.8'
 
 # Javascript library
@@ -13,49 +11,36 @@ gem 'jquery-rails'
 # gem 'mysql2'
 gem 'sqlite3'
 
-# Javascript engine
-gem 'execjs'
-gem 'therubyracer'
-
 # Design Pattern Practice
 # gem 'cells'
 # gem 'draper'
 
-# File Uploads
-# gem 'paperclip'
-# gem 'carrierwave'
-# gem 'mini_magick'
-
-# Auto suitable image
-# gem 'responsive_image_tag'
-
-# SEO Helper
-# gem 'sitemap_generator'
-
 # Paginator
 # gem 'kaminari'
-# gem 'will_paginate'
 
 # Form tool
 # gem "simple_form"
-# gem 'formtastic'
-# gem 'formtastic-bootstrap'
 
-# Authentication
-# gem 'devise'
-# gem 'clearance'
-gem "bcrypt-ruby", :require => "bcrypt"
+# To use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Facebook API
-# gem 'koala'
+# Use unicorn as the app server
+# gem 'unicorn'
 
-# Payment
-# gem 'activemerchant', :require => 'active_merchant'
+# Deploy with Capistrano
+# gem 'capistrano'
+
+# To use debugger
+# gem 'debugger'
 
 group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  # gem 'therubyracer', :platforms => :ruby
+
+  gem 'uglifier', '>= 1.0.3'
 end
 
 group :development, :test do
@@ -67,10 +52,7 @@ group :development, :test do
   gem "spork"
   gem 'spork-rails'
   gem "rspec-rails"
-  gem 'rspec-cells'
   gem 'factory_girl_rails'
-  gem 'capybara'
-  gem 'capybara-webkit'
   gem "guard-spork"
   gem 'guard-livereload'
   gem 'guard-rspec'
@@ -86,8 +68,4 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'rack_session_access'
-  # timetracking
-  # gem 'prickle'
-  gem 'simplecov', :require => false
-  gem 'simplecov-rcov', :require => false
 end

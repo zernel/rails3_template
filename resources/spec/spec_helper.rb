@@ -1,16 +1,5 @@
 require 'rubygems'
 
-require 'simplecov'
-require 'simplecov-rcov'
-class SimpleCov::Formatter::MergedFormatter
-  def format(result)
-    SimpleCov::Formatter::HTMLFormatter.new.format(result)
-    SimpleCov::Formatter::RcovFormatter.new.format(result)
-  end
-end
-SimpleCov.formatter = SimpleCov::Formatter::MergedFormatter
-SimpleCov.start 'rails'
-
 require 'spork'
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
@@ -32,10 +21,6 @@ Spork.prefork do
   Spork.trap_method(Rails::Application, :eager_load!)
   Rails.application.railties.all { |r| r.eager_load! }
   require 'shoulda/matchers/integrations/rspec'
-  require 'capybara/rails'
-  require 'capybara/rspec'
-  require 'prickle/capybara' 
-  Capybara.javascript_driver = :webkit
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -73,16 +58,7 @@ Spork.prefork do
     end
 
     config.before(:each) do
-      if Capybara.current_driver == :rack_test
-        DatabaseCleaner.strategy = :transaction
-        DatabaseCleaner.start
-      else
-        DatabaseCleaner.strategy = :truncation
-      end
-    end
-
-    config.after(:each) do
-      DatabaseCleaner.clean if Capybara.current_driver == :rack_test
+      DatabaseCleaner.strategy = :truncation
     end
 
     config.treat_symbols_as_metadata_keys_with_true_values = true

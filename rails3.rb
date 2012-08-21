@@ -53,6 +53,7 @@ Thumbs.db
 .DS_Store
 tmp/*
 coverage/*
+.sass-cache/
 CODE
 
 # keep tmp and log
