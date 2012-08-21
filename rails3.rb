@@ -4,9 +4,6 @@ run "rm public/index.html"
 run "rm app/assets/images/rails.png"
 run "cp config/database.yml config/database.example.yml"
 
-# reset css
-file 'app/assets/stylesheets/reset.css', File.read("#{File.dirname(rails_template)}/resources/app/assets/stylesheets/reset.css")
-
 # install gems
 run "rm Gemfile"
 file 'Gemfile', File.read("#{File.dirname(rails_template)}/resources/Gemfile")
