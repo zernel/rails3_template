@@ -1,7 +1,7 @@
 rails3_template
 ===============
 
-A rails template for rails3.2.6 , config the test framework with spec and guard. [more](http://zernel.github.com/rails/2012/06/25/rails3-template/)
+A rails template for rails3.2.8 , config the test framework with spec and guard. [more](http://zernel.github.com/rails/2012/06/25/rails3-template/)
 
 # Installation
 
