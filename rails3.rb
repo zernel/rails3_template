@@ -2,17 +2,17 @@
 run "rm README.rdoc"
 run "rm public/index.html"
 run "rm app/assets/images/rails.png"
-run "cp config/database.yml config/database.example.yml"
+run "cp config/database.yml config/database.yml.example"
 
 # install gems
 run "rm Gemfile"
 file 'Gemfile', File.read("#{File.dirname(rails_template)}/resources/Gemfile")
 
-# init content_controller
-route "root :to => 'content#index'"
-file 'app/controllers/content_controller.rb', File.read("#{File.dirname(rails_template)}/resources/app/controllers/content_controller.rb")
-run "mkdir app/views/content"
-file 'app/views/content/index.html.erb', File.read("#{File.dirname(rails_template)}/resources/app/views/content/index.html.erb")
+# init sites_controller
+route "root :to => 'sites#index'"
+file 'app/controllers/sites_controller.rb', File.read("#{File.dirname(rails_template)}/resources/app/controllers/sites_controller.rb")
+run "mkdir app/views/sites"
+file 'app/views/sites/index.html.erb', File.read("#{File.dirname(rails_template)}/resources/app/views/sites/index.html.erb")
 
 # bundle install
 run "bundle install"
@@ -54,6 +54,9 @@ coverage/*
 public/assets/
 public/uploads/
 .sass-cache/
+.rvmrc
+clean_dirs.sh
+config/setup_load_paths.rb
 CODE
 
 # keep tmp and log
